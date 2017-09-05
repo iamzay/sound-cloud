@@ -3,8 +3,15 @@
 @import './custom/search.scss';
 @import './custom/popover.scss';
 @import './custom/toolbar.scss';
+@import "./custom/songcard.scss";
+@import "./custom/songs.scss";
+@import "./custom/toggle-play-button.scss";
 
 body {
     margin: 0px;
     padding: 0px;
+}
+
+.clearfix {
+  overflow:auto;
 }

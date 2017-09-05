@@ -27,9 +27,9 @@ class Nav extends React.Component {
                   <i className="icon ion-chevron-up" />
                 </div>
                 <div className="nav-user-popover">
-                  <a href="#" className="orange-block">
+                  <button href="#" className="orange-block">
                     Sign into SoundCloud
-                  </a>
+                  </button>
                 </div>
               </Popover>
             </div>

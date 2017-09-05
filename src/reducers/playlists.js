@@ -12,10 +12,9 @@ function playlist(state = initialListState, action) {
       return { ...state, isFetching: true };
     case types.RECEIVE_SONGS:
       return {
-        ...state,
         isFetching: false,
-        nextUrl: action.nextUrl,
-        items: [...state.items, ...action.items]
+        items: state.items.concat(action.songs),
+        nextUrl: action.nextUrl
       };
     default:
       return state;

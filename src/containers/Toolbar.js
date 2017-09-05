@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router';
 
 import { playlistTags, pastDays } from '../constants/playlist.js';
 
 class Toolbar extends Component {
-  constructor(...props) {
-    super(...props);
-  }
-
   render() {
     const { q, t } = this.props;
 
@@ -15,7 +11,7 @@ class Toolbar extends Component {
       return (
         <Link
           key={index}
-          to={`/songs?q=${tag}` + (t ? `&t=${t}` : '')}
+          to={`/songs?q=${tag.toLowerCase()}` + (t ? `&t=${t}` : '')}
           className="toolbar-link toolbar-tag"
           activeClassName="active"
         >
@@ -28,7 +24,10 @@ class Toolbar extends Component {
       return (
         <Link
           key={index}
-          to={`/songs?q=${q}` + (days.toString() === t ? '' : `&t=${days}`)}
+          to={
+            `/songs?q=${q.toLowerCase()}` +
+            (days.toString() === t ? '' : `&t=${days}`)
+          }
           className="toolbar-link"
           activeClassName="active"
         >

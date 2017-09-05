@@ -1,0 +1,65 @@
+.song-card {
+  padding: 10px;
+  background-color:#fff;
+  border:1px solid #e3e3e3;
+  width: 180px;
+
+  &.active {
+    border-color:#a6d2a5;
+  }
+}
+
+.song-card-image {
+  height: 70px;
+  margin-bottom: 10px;
+
+  background:no-repeat center center;
+  background-size:cover;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.song-card-user-image {
+  display:block;
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+  margin-right: 10px;
+  border-radius:100%;
+  float:left;
+}
+
+.song-card-details {
+  position: relative;
+}
+
+.song-card-user-username {
+  display: block;
+  margin-right: 30px;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration:none;
+  color:#3381b7;
+
+  &:hover {
+    text-decoration:underline;
+  }
+}
+
+.song-card-title {
+  display: block;
+  color: #222;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration:none;
+
+  &:hover {
+    text-decoration:underline;
+  }
+}

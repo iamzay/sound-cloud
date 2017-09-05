@@ -11,8 +11,8 @@ function entities(state = initialState, action) {
     case types.RECEIVE_SONGS:
       return {
         ...state,
-        songs: { ...state.songs, ...action.songs },
-        users: { ...state.users, ...action.users }
+        songs: { ...state.songs, ...action.entities.songs },
+        users: { ...state.users, ...action.entities.users }
       };
     default:
       return state;
