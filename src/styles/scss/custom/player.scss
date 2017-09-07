@@ -1,0 +1,128 @@
+.player {
+  position:fixed;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  background-color:#fff;
+  border-top: 1px solid #e3e3e3;
+}
+
+.player-main {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+}
+
+.player-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & + .player-section {
+    margin-left: 40px;
+  }
+}
+
+.player-info {
+  width: 140px;
+}
+
+.player-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.player-button {
+  position: relative;
+  padding:4px;
+
+  &>i {
+    color:#ccc;
+  }
+
+  &:hover {
+    cursor:pointer;
+
+    &>i {
+      color:#222;
+    }
+
+    .player-button-tooltip {
+      display: block;
+    }
+  }
+
+  &+.player-button {
+    margin-left: 30px;
+  }
+
+  .ion-ios-pause {
+    color: #A6D2A5;
+  }
+
+  &.active {
+    .icon {
+      color: #A6D2A5;
+    }
+  }
+}
+
+.player-seek {
+  flex:1;
+}
+
+.player-seek-bar-wrap {
+  padding:6px 0;
+  flex:1;
+
+  &:hover {
+    cursor:pointer;
+  }
+}
+
+.player-seek-bar {
+  position:relative;
+  height: 2px;
+  background-color:#ddd;
+  position:relative;
+}
+
+.player-seek-duration-bar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  background-color: #a6d2a5;
+}
+
+.player-seek-handle {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  border:1px solid #e3e3e3;
+}
+
+.player-time {
+  margin-left: 30px;
+  color: #ccc;
+  font-size: 11px;
+}
+
+.player-time-divider {
+  margin: 0 10px;
+}
+
+.player-button-tooltip {
+  display: none;
+  position: absolute;
+  left: -5px;
+  top: -6px;
+  font-size:11px;
+
+}

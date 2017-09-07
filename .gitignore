@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/src/styles/fonts/
+/public/fonts/
 
 # testing
 /coverage

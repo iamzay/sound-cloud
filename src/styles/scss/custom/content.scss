@@ -1,0 +1,9 @@
+.content:before,.content:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+.content {
+  margin:40px 0 80px;
+}

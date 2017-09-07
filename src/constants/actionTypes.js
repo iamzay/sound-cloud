@@ -7,3 +7,5 @@ export const CHANGE_CURRENT_PLAYLIST = 'CHANGE_CURRENT_PLAYLIST';
 /* actions here change entities and playlists */
 export const REQUEST_SONGS = 'REQUEST_SONGS';
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const REQUEST_SONG = 'REQUEST_SONG';

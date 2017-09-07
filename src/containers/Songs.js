@@ -33,6 +33,12 @@ class Songs extends Component {
     /* 若歌曲已被选中，则只需更改其播放状态 */
     if (isActive) {
       dispatch(toggleIsPlaying(!isPlaying));
+      const audio = document.getElementById('audio');
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
     } else {
       /* 否则需要选中该歌曲并播放 */
       dispatch(playSong(playlist, index));
@@ -48,22 +54,24 @@ class Songs extends Component {
     const items = playlistInfo ? playlistInfo.items : [];
 
     return (
-      <div className="songs-container">
-        {items.map((songId, index) => {
-          const song = songs[songId];
-          const user = users[song.user_id];
-          const isActive = currentPlayingId === song.id;
-          return (
-            <SongCard
-              isActive={isActive}
-              isPlaying={isPlaying}
-              togglePlaying={this.togglePlaying.bind(this, isActive, index)}
-              song={song}
-              user={user}
-              key={index}
-            />
-          );
-        })}
+      <div className="container">
+        <div className="songs-container">
+          {items.map((songId, index) => {
+            const song = songs[songId];
+            const user = users[song.user_id];
+            const isActive = currentPlayingId === song.id;
+            return (
+              <SongCard
+                isActive={isActive}
+                isPlaying={isPlaying}
+                togglePlaying={this.togglePlaying.bind(this, isActive, index)}
+                song={song}
+                user={user}
+                key={index}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

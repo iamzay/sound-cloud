@@ -9,9 +9,11 @@
     color:#fff;
 }
 
-.nav {
+.nav-main {
     display:flex;
     justify-content:space-between;
+    align-items:center;
+    height: 100%;
     flex-flow:row nowrap;
 }
 

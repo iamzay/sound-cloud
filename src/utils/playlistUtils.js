@@ -1,4 +1,6 @@
 import moment from 'moment';
+import { normalize, schema } from 'normalizr';
+
 import { CLIENT_ID } from '../constants/config.js';
 import { GENRES_MAP, IMAGE_SIZES } from '../constants/songConstants.js';
 
@@ -82,4 +84,14 @@ export function getImageUrl(s, size = null) {
     default:
       return str;
   }
+}
+
+export function normalizeSongs(songs) {
+  const user = new schema.Entity('users');
+  const song = new schema.Entity('songs', {
+    user: user
+  });
+  const songList = [song];
+  const normalizedData = normalize(songs, songList);
+  return normalizedData;
 }

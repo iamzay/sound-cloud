@@ -37,11 +37,15 @@ class Toolbar extends Component {
     });
 
     return (
-      <div className="toolbar">
-        {tagElems}
-        <div className="toolbar-filter">
-          <i className="icon ion-funnel" />
-          {dayElems}
+      <div className="toolbar-main">
+        <div className="container ">
+          <div className="toolbar">
+            {tagElems}
+            <div className="toolbar-filter">
+              <i className="icon ion-funnel" />
+              {dayElems}
+            </div>
+          </div>
         </div>
       </div>
     );

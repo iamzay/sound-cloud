@@ -8,3 +8,10 @@ export function getCurrentPlayingId(player, playlists) {
 
   return playlistInfo.items[current];
 }
+
+export function isSongActive(songId, player) {
+  const { currentSongIndex } = player;
+  if (currentSongIndex === null) {
+    return false;
+  }
+}

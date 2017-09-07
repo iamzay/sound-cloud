@@ -1,0 +1,90 @@
+.songlist-item {
+  display:flex;
+  height: 80px;
+  border:1px solid #e3e3e3;
+  border-bottom:none;
+
+  &:last-child {
+    border-bottom:1px solid #e3e3e3;
+  }
+
+  &.active {
+    border-bottom:1px solid;
+    border-color:#A6D2A5;
+
+    &+.songlist-item {
+      border-top:none;
+    }
+  }
+}
+
+.songlist-item-image {
+  background:no-repeat center center;
+  background-size:cover;
+  height: 60px;
+  width: 60px;
+  margin:10px 20px 10px 10px;
+}
+
+.songlist-item-details {
+  padding:10px 0;
+  flex:1;
+}
+
+.songlist-item-title {
+  color: #222;
+  font-size: 14px;
+  font-weight: 300;
+
+  // 只允许一行
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.songlist-item-info {
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  margin-top: 10px;
+}
+
+.songlist-item-user-image {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: no-repeat center center;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.songlist-item-user-name {
+  font-size: 14px;
+  color:#3381b7;
+}
+
+.songlist-item-stats {
+  font-size: 11px;
+  color:#ccc;
+  margin-left: 20px;
+  flex:1;
+}
+
+.songlist-item-stat {
+  display: inline-block;
+  width: 80px;
+
+  & + .songlist-item-stat {
+    margin-left: 20px;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+.songlist-item-waveform {
+  width: 200px;
+  height: 80px;
+  border-left: 1px solid #e3e3e3;
+}
