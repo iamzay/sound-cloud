@@ -32,6 +32,11 @@ class Player extends Component {
     this.changeSeekHandle = this.changeSeekHandle.bind(this);
     this.toggleRepeat = this.toggleRepeat.bind(this);
     this.toggleShuffle = this.toggleShuffle.bind(this);
+    this.handleVolumeBarClick = this.handleVolumeBarClick.bind(this);
+    this.handleVolumeMouseDown = this.handleVolumeMouseDown.bind(this);
+    this.handleVolumeMouseUp = this.handleVolumeMouseUp.bind(this);
+    this.handleVolumeMouseMove = this.handleVolumeMouseMove.bind(this);
+    this.setVolume = this.setVolume.bind(this);
 
     this.state = {
       shuffle: false,
@@ -129,6 +134,36 @@ class Player extends Component {
     this.audio.currentTime = time;
   }
 
+  handleVolumeMouseDown() {
+    this.volumeBar.addEventListener('mousemove', this.handleVolumeMouseMove);
+    this.volumeBar.addEventListener('mouseup', this.handleVolumeMouseUp);
+  }
+
+  handleVolumeMouseMove(e) {
+    this.setVolume(e);
+  }
+
+  handleVolumeMouseUp() {
+    this.volumeBar.removeEventListener('mousemove', this.handleVolumeMouseMove);
+    this.volumeBar.removeEventListener('mouseup', this.handleVolumeMouseUp);
+  }
+
+  handleVolumeBarClick(e) {
+    this.setVolume(e);
+  }
+
+  setVolume(e) {
+    const wrap = e.currentTarget;
+    const dist = e.clientX - offsetLeft(wrap);
+    const volume = dist / wrap.clientWidth;
+    if (volume < 0 || volume > 1) {
+      return;
+    }
+
+    this.setState({ volume });
+    this.audio.volume = volume;
+  }
+
   handleTimeUpdate(e) {
     if (this.isSeeking) {
       return;
@@ -197,6 +232,9 @@ class Player extends Component {
     const { song, user, player, dispatch } = this.props;
     const { isPlaying, currentTime } = player;
     const { duration } = this.state;
+
+    /* 音量相关 */
+    const { volume } = this.state;
 
     return (
       <div className="player">
@@ -285,10 +323,20 @@ class Player extends Component {
               <div className="player-button">
                 <i className="icon ion-android-volume-up" />
               </div>
-              <div className="player-volume-bar-wrap">
+              <div
+                className="player-volume-bar-wrap"
+                onClick={this.handleVolumeBarClick}
+                ref={node => (this.volumeBar = node)}
+              >
                 <div className="player-volume-bar">
-                  <div className="player-volume">
-                    <div className="player-volume-handle" />
+                  <div
+                    className="player-volume"
+                    style={{ width: `${volume * 100}%` }}
+                  >
+                    <div
+                      className="player-volume-handle"
+                      onMouseDown={this.handleVolumeMouseDown}
+                    />
                   </div>
                 </div>
               </div>

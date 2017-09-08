@@ -132,6 +132,7 @@
   width: 100px;
   height: 6px;
   padding:2px 0;
+  cursor:pointer;
 }
 
 .player-volume-bar {
@@ -143,7 +144,6 @@
 .player-volume {
   position: relative;
   height: 100%;
-  width: 50%;
   background:#a6d2a5;
 }
 
