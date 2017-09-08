@@ -281,6 +281,18 @@ class Player extends Component {
                 <span className="player-button-tooltip">Shuffle</span>
               </div>
             </div>
+            <div className="player-section">
+              <div className="player-button">
+                <i className="icon ion-android-volume-up" />
+              </div>
+              <div className="player-volume-bar-wrap">
+                <div className="player-volume-bar">
+                  <div className="player-volume">
+                    <div className="player-volume-handle" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

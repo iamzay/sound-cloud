@@ -13,7 +13,7 @@ function entities(state = initialState, action) {
         users: { ...state.users, ...action.entities.users }
       };
     case types.RECEIVE_COMMENTS:
-      const tmp = { ...state };
+      const tmp = { songs: { ...state.songs }, users: { ...state.users } };
       tmp.songs[action.songId].comments = action.comments;
       return tmp;
     default:

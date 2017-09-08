@@ -124,5 +124,36 @@
   left: -5px;
   top: -6px;
   font-size:11px;
+}
 
+.player-volume-bar-wrap {
+  display:flex;
+  align-items:center;
+  width: 100px;
+  height: 6px;
+  padding:2px 0;
+}
+
+.player-volume-bar {
+  width: 100%;
+  background:#e3e3e3;
+  height: 2px;
+}
+
+.player-volume {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  background:#a6d2a5;
+}
+
+.player-volume-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border:1px solid #e3e3e3;
+  top: -6px;
+  right: -6px;
+  background-color:#fff;
 }

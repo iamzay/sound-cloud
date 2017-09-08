@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Waveform from '../components/Waveform.js';
 import SongListItem from '../containers/SongListItem.js';
 import TogglePlayButton from '../containers/TogglePlayButton.js';
+import Comment from '../components/Comment.js';
+import Spinner from '../components/Spinner.js';
 
 import { fetchSongIfNeeded } from '../actions/playlistActions.js';
 import { addCommas } from '../utils/FormatUtils.js';
@@ -56,12 +58,34 @@ class Song extends Component {
     return items;
   }
 
+  renderComments() {
+    const { songId, songs, playlists } = this.props;
+    const song = songs[songId];
+    const comments = song.comments;
+    if (!comments) {
+      return null;
+    }
+
+    const commentElems = comments
+      .sort((a, b) => a.timestamp - b.timestamp)
+      .map((comment, i) => {
+        return <Comment key={comment.id} comment={comment} />;
+      });
+
+    return (
+      <div className="comment-container">
+        <div className="comment-header">Comments</div>
+        <div className="comment-list">{commentElems}</div>
+      </div>
+    );
+  }
+
   render() {
     const { songId, songs, users, player, dispatch, isActive } = this.props;
     const { currentTime } = player;
     const song = songs[songId];
     if (!song) {
-      return <div>waiting...</div>;
+      return <Spinner />;
     }
 
     const user = users[song.user_id];
@@ -134,9 +158,8 @@ class Song extends Component {
               </div>
               {this.renderSongs()}
             </div>
-
-            <div className="col-3-10" />
           </div>
+          <div className="col-3-10">{this.renderComments()}</div>
         </div>
       </div>
     );
