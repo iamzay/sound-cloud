@@ -1,7 +1,15 @@
 .songs-container {
+  margin-top:50px;
+  width: 100%;
+}
+
+.song-row {
+  width: 100%;
   display:flex;
-  flex-flow:row wrap;
-  padding: 50px 50px;
-  justify-content:flex-start;
-  align-items:center;
+
+  &>.song-card+.song-card {
+    margin-left:20px;
+  }
+
+  margin-bottom:20px;
 }
