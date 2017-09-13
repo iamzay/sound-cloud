@@ -5,5 +5,9 @@ const song = new schema.Entity('songs', {
   user: user
 });
 const songList = [song];
-
-export { song as songSchema, songList as songListSchema };
+const userList = [user];
+export {
+  song as songSchema,
+  songList as songListSchema,
+  userList as userListSchema
+};
