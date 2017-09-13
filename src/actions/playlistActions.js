@@ -103,7 +103,7 @@ function receiveSong(entities, songId, songs) {
     const { playlists } = getState();
     const song = songs[songId];
     const playlistKey = song.title + SONG_PLAYLIST_SUFFIX;
-    dispatch(changeCurrentPlaylist(playlistKey));
+    // dispatch(changeCurrentPlaylist(playlistKey));
 
     /* 如果已有这张表了，则无需请求 */
     if (playlists[playlistKey]) {

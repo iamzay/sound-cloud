@@ -81,18 +81,19 @@ class Songs extends Component {
         const user = users[song.user_id];
         const isActive = currentPlayingId === song.id;
         return (
-          <SongCard
-            isActive={isActive}
-            isPlaying={isPlaying}
-            togglePlaying={this.togglePlaying.bind(this, isActive, index)}
-            song={song}
-            user={user}
-            key={index}
-          />
+          <div className="song-cell">
+            <SongCard
+              isActive={isActive}
+              isPlaying={isPlaying}
+              togglePlaying={this.togglePlaying.bind(this, isActive, index)}
+              song={song}
+              user={user}
+              key={index}
+            />
+          </div>
         );
       });
 
-      console.log(i);
       /* 添加一行 */
       songRows.push(
         <div

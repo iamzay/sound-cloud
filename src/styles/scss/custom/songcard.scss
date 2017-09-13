@@ -1,4 +1,11 @@
+.song-cell {
+  &+.song-cell {
+    margin-left:20px;
+  }
+}
+
 .song-card {
+  display:inline-block;
   padding: 10px;
   background-color:#fff;
   border:1px solid #e3e3e3;
