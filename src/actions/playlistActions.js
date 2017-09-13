@@ -52,7 +52,7 @@ export function fetchSongsIfNeeded(playlist) {
   };
 }
 
-function receiveSongs(entities, songs, playlist, nextUrl) {
+export function receiveSongs(entities, songs, playlist, nextUrl) {
   return {
     type: types.RECEIVE_SONGS,
     entities,

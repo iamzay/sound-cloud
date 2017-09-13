@@ -66,7 +66,11 @@ class SongListItem extends Component {
         </div>
         <div className="songlist-item-waveform">
           <Waveform
-            waveformUrl={song.waveform_url.replace('https', 'http')}
+            waveformUrl={
+              song.waveform_url ? (
+                song.waveform_url.replace('https', 'http')
+              ) : null
+            }
             currentTime={player.currentTime}
             duration={song.duration}
             dispatch={dispatch}

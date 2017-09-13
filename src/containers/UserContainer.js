@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import User from '../containers/User.js';
 
 class UserContainer extends Component {
-  constructor(...props) {
-    super(...props);
-  }
-
   render() {
-    return <div className="user-container">UserContainer</div>;
+    const { id } = this.props.params;
+    const userId = parseInt(id);
+
+    return <User userId={userId} />;
   }
 }
 

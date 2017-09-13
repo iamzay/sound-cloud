@@ -6,7 +6,7 @@ import {
   constructUserUrl,
   constructUserProfilesUrl
 } from '../utils/UserUtils';
-import * as types from '../constants/ActionTypes';
+import * as types from '../constants/actionTypes';
 import { USER_PLAYLIST_SUFFIX } from '../constants/playlist.js';
 import { songListSchema, userListSchema } from '../constants/Schemas.js';
 import { receiveSongs } from '../actions/playlistActions.js';
@@ -14,10 +14,8 @@ import { receiveSongs } from '../actions/playlistActions.js';
 export function fetchUserIfNeeded(userId) {
   return (dispatch, getState) => {
     const { entities: { users } } = getState();
-    if (!users[userId]) {
+    if (!users[userId] || !users[userId].followings) {
       dispatch(fetchUser(userId));
-    } else if (!users[userId].followings) {
-      dispatch(fetchUserData(userId));
     }
   };
 }
@@ -53,8 +51,10 @@ function receiveUser(userId, user) {
 }
 
 function fetchUserData(userId) {
-  dispatch(fetchUserTracks(userId));
-  dispatch(fetchUserFollowings(userId));
+  return dispatch => {
+    dispatch(fetchUserTracks(userId));
+    dispatch(fetchUserFollowings(userId));
+  };
 }
 
 function fetchUserTracks(userId) {
@@ -66,9 +66,9 @@ function fetchUserTracks(userId) {
         const normalized = normalize(json, songListSchema);
         dispatch(
           receiveSongs(
-            normalized.entities,
+            { songs: normalized.entities.songs },
             normalized.result,
-            users[userId].USER_PLAYLIST_SUFFIX,
+            users[userId].username + USER_PLAYLIST_SUFFIX,
             null
           )
         );
